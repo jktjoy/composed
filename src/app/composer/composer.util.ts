@@ -161,7 +161,7 @@ export const composerEditor = async (
       });
     }
     if (control) {
-      node.addControl(node.id + param.key, control);
+      node.addControl(control.id, control);
     }
   };
 

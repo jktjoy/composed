@@ -1,10 +1,5 @@
 import { ClassicPreset, ConnectionBase, NodeBase } from 'rete';
 
-function setProto<T>(value: T) {
-    return function <K extends string>(target: Record<K, T>, key: K) {
-        target[key] = value;
-    };
-}
 
 export class ComposerNode<
   CustomPayload extends { name: string; id: string; },
