@@ -1,0 +1,8 @@
+<label [class.disabled]="data.readonly"
+  class="chk-container">
+  <input [checked]="data.value"
+    [readonly]="data.readonly"
+    type="checkbox"
+    (change)="onChange($event)" />
+  {{data.label||'Checkbox Control'}}
+</label>

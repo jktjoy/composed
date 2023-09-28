@@ -1,0 +1,9 @@
+<div class="wrap">
+  <h2 class="label">{{data.label}}</h2>
+  <select [value]="data.value"
+    (change)="onChange($event)">
+    <option value="v"
+      *ngFor="let v of data.dropdownOptions"
+      [disabled]="data.readonly">{{v}}</option>
+  </select>
+</div>

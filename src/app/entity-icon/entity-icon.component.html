@@ -1,0 +1,7 @@
+<div *ngIf="jarConfigMap[entity]?.icon"
+  [style.mask-image]="'url('+jarConfigMap[entity].icon+')'"
+  [style.-webkit-mask-image]="'url('+jarConfigMap[entity].icon+')'"
+  [style.background-color]="themeColors.includes(color) ? 'var(--mat-'+color+')': color"
+  [style.width.px]="size"
+  [style.height.px]="size">
+</div>

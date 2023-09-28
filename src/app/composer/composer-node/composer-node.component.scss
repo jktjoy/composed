@@ -1,0 +1,64 @@
+@use 'sass:math';
+@import '../composer.styles.scss';
+:root {
+  --composer-node-bkg: var(--mat-background);
+}
+
+:host {
+  display: block;
+  --composer-node-bkg: var(--mat-background);
+  background: var(--composer-node-bkg);
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  cursor: pointer;
+  box-sizing: border-box;
+  min-height: 15em;
+  height: auto;
+  padding-bottom: 6px;
+  position: relative;
+  user-select: none;
+  &:hover {
+    --composer-node-bkg: var(--background-color-2);
+  }
+  &.selected {
+    border-color: var(--border-active-color);
+    --composer-node-bkg: var(--mat-accent);
+  }
+  .title {
+    display: flex;
+    font-weight: bold;
+    align-items: center;
+    gap: 0.5em;
+    padding: 1em;
+  }
+  .output,
+  .output-socket {
+    --socket-margin: auto #{$socketMargin * -1} auto auto;
+    --socket-align: right;
+    text-align: var(--socket-align);
+  }
+  .input,
+  .input-socket {
+    --socket-margin: auto auto auto #{$socketMargin * -1};
+    --socket-align: left;
+    text-align: var(--socket-align);
+  }
+  .input-socket,
+  .output-socket {
+    margin: var(--socket-margin);
+    display: inline-block;
+  }
+  .input-title,
+  .output-title {
+    vertical-align: middle;
+    display: inline-block;
+    margin: $socketMargin;
+    line-height: $socketSize;
+  }
+
+  .control {
+    margin: 0.5em #{math.div(($socketSize + 2 * $socketMargin), 2)};
+    text-align: center;
+    width: calc(100% - #{$socketSize + 2 * $socketMargin});
+  }
+}

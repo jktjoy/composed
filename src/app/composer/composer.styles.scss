@@ -1,0 +1,3 @@
+@use 'sass:math';
+$socketSize: 2em;
+$socketMargin: math.div($socketSize, 2);

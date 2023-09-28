@@ -1,0 +1,7 @@
+<div class="wrap">
+  <h2 class="label">{{data.label}}</h2>
+  <input [value]="data.value"
+    [readonly]="data.readonly"
+    type="text"
+    (input)="onChange($event)" />
+</div>

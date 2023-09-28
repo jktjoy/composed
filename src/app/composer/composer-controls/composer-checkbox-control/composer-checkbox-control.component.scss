@@ -1,0 +1,70 @@
+@import '../../composer.styles.scss';
+
+:host {
+  --chk-color: var(--mat-primary);
+  --chk-color-disabled: var(--disabled-color);
+  --chk-shadow: var(--border-color);
+  --chk-bkg: var(--mat-body);
+}
+
+.chk-container {
+  width: 100%;
+  font-weight: bold;
+  line-height: 3em;
+  display: grid;
+  grid-template-columns: 1em auto;
+  gap: 1em;
+  place-items: center;
+  place-content: flex-start;
+  padding-left: 1.5em;
+
+  &.disabled {
+    color: var(--chk-color-disabled);
+    cursor: not-allowed;
+  }
+}
+
+input[type='checkbox'] {
+  appearance: none;
+  background-color: var(--chk-bkg);
+  margin: 0;
+
+  font: inherit;
+  color: currentColor;
+  width: 2em;
+  height: 2em;
+  border: 0.15em solid var(--chk-shadow);
+  border-radius: 0.15em;
+  transform: translateY(-0.075em);
+
+  display: grid;
+  place-content: center;
+}
+
+input[type='checkbox']::before {
+  content: '';
+  width: 1.65em;
+  height: 1.65em;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+  transform: scale(0);
+  transform-origin: bottom left;
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 1em 1em var(--chk-shadow);
+  background-color: var(--chk-color);
+  // TODO light mode chk-color is not reflecting
+}
+
+input[type='checkbox']:checked::before {
+  transform: scale(1);
+}
+
+input[type='checkbox']:focus {
+  outline: max(2px, 0.15em) solid currentColor;
+  outline-offset: max(2px, 0.15em);
+}
+
+input[type='checkbox']:disabled {
+  --chk-color: var(--chk-color-disabled);
+  color: var(--chk-color-disabled);
+  cursor: not-allowed;
+}

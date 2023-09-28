@@ -1,0 +1,34 @@
+<div class="title">
+  <app-entity-icon [entity]="data.nodePayload.entityType"></app-entity-icon>
+  <div>{{data.label}}</div>
+</div>
+
+<!-- outputs -->
+<div class="output"
+  *ngFor="let output of data.outputs | keyvalue">
+  <div class="output-title">{{output.value?.label}}</div>
+  <div refComponent
+    class="output-socket"
+    [data]="{ type: 'socket', side: 'output', key: output.key, nodeId: data.id, payload: output.value?.socket, seed: seed }"
+    [emit]="emit">
+  </div>
+</div>
+
+<!-- controls -->
+<div refComponent
+  class="control"
+  *ngFor="let control of data.controls | keyvalue"
+  [data]="{ type: 'control', payload: control.value }"
+  [emit]="emit">
+</div>
+
+<!-- inputs -->
+<div class="input"
+  *ngFor="let input of data.inputs | keyvalue">
+  <div refComponent
+    class="input-socket"
+    [data]="{ type: 'socket', side: 'input', key: input.key, nodeId: data.id, payload: input.value?.socket, seed: seed }"
+    [emit]="emit">
+  </div>
+  <div class="input-title">{{input.value?.label}}</div>
+</div>

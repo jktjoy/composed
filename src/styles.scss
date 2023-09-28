@@ -1,1 +1,92 @@
+@use 'sass:math';
+
+
+@import 'theme-ng-material.scss';
+@import 'theme.scss';
+
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+html,
+body,
+app-root,
+.app-frame {
+  margin: 0;
+  height: 100vh;
+  overflow: hidden;
+  box-sizing: border-box;
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  font: 400 14px/20px Poppins;
+  background-color: var(--mat-body);
+}
+
+*,
+::after,
+::before {
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+}
+
+router-outlet {
+  + * {
+    overflow-y: auto;
+    height: calc(100vh - 70px); // - header height
+    display: block;
+    margin-top: 0px;
+  }
+}
+
+a {
+  color: var(--link-color);
+
+  &:hover {
+    color: var(--link-hover-color);
+  }
+}
+
+.text-divider {
+  user-select: none;
+  pointer-events: none;
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  color: var(--mat-text);
+  opacity: 0.3;
+  margin: 8px 0px;
+
+  &:before,
+  &:after {
+    content: '';
+    flex-grow: 1;
+    background: var(--mat-text);
+    opacity: 0.3;
+    height: 1px;
+    font-size: 0px;
+    line-height: 0px;
+    margin: 0px 8px;
+  }
+}
+
+.composer-fill-area {
+  display: table;
+  z-index: -1;
+  position: absolute;
+  top: -320000px;
+  left: -320000px;
+  width: 640000px;
+  height: 640000px;
+}
+
+.composer-background {
+  $dotSz: 0.05em;
+  $dotClr: var(--link-color);
+  $tileSz: 30px;
+  $tilePos: #{math.div($tileSz, 2)};
+
+  background-color: var(--mat-body);
+  opacity: 1;
+  background-image: radial-gradient(#{$dotClr} #{$dotSz}, transparent #{$dotSz}),
+  radial-gradient(#{$dotClr} #{$dotSz}, var(--mat-body) #{$dotSz});
+  background-size: #{$tileSz} #{$tileSz};
+  background-position: 0 0,
+  #{$tilePos} #{$tilePos};
+}

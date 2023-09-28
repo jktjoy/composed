@@ -1,0 +1,26 @@
+@import '../../composer.styles.scss';
+
+select {
+  background-color: var(--mat-background-3);
+  width: 100%;
+  border-radius: 4px;
+  height: 4em;
+  border: 1px solid var(--border-color);
+}
+
+option {
+  height: 3em;
+}
+
+// TODO maybe material inputs
+.wrap {
+  border: 2px groove var(--border-color);
+  padding: 1em;
+  .label {
+    float: left;
+    margin: -1.7em 0 0;
+    padding: 0 0.5em;
+    font-weight: bold;
+    background-color: var(--composer-node-bkg);
+  }
+}
